@@ -1,0 +1,23 @@
+# Configuração local e credenciais
+/config.php
+/projeto.md
+/.env
+/.env.*
+!.env.example
+
+# Logs locais
+/logs/*
+!/logs/.gitkeep
+
+# Dependências e cache PHP
+/vendor/
+/.phpunit.result.cache
+
+# Arquivos do sistema e IDE
+.DS_Store
+Thumbs.db
+/.idea/
+/.vscode/
+
+# Pacotes gerados localmente
+/*.zip
