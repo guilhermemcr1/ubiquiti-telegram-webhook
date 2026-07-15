@@ -11,6 +11,7 @@ Endpoint simples em PHP para receber webhooks do **UniFi Network Alarm Manager**
 | --- | --- |
 | `107` | Internet restaurada |
 | `112` | Alta latência detectada |
+| `515` | Múltiplos dispositivos offline |
 | `201` | Tentativa de intrusão detectada e bloqueada |
 | `203` | Conexão bloqueada pelo firewall |
 | `400` | Cliente Wi-Fi conectado |
@@ -187,6 +188,7 @@ find . -name '*.php' -exec php -l {} \;
 │   ├── high-traffic.php
 │   ├── internet-restored.php
 │   ├── high-latency.php
+│   ├── multiple-devices-offline.php
 │   ├── firewall-blocked.php
 │   ├── threat-blocked.php
 │   └── default.php

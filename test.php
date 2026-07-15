@@ -78,6 +78,12 @@ $eventos = [
         'UNIFIdeviceMac' => '02:00:00:00:00:01',
         'UNIFIdeviceVersion' => '5.1.19',
     ]],
+    '515' => ['name' => 'Multiple Devices Offline', 'parameters' => [
+        'UNIFIhost' => 'Gateway de teste',
+        'UNIFIdeviceList' => 'Gateway de teste, AP de teste',
+        'cnt' => '2',
+        'UNIFIreference' => 'https://help.ui.com/exemplo',
+    ]],
     '203' => ['name' => 'Blocked by Firewall', 'parameters' => [
         'UNIFIsrcClientAlias' => 'Notebook de teste',
         'UNIFIsrcClientIp' => '192.0.2.20',
@@ -105,6 +111,10 @@ verificar(str_contains($internetRestaurada, '<b>Provedor:</b> Provedor de teste'
 
 $latenciaAlta = formatarEvento(array_replace_recursive($base, $eventos['112'], ['deviceEventClassId' => '112']));
 verificar(str_contains($latenciaAlta, '<b>Latência:</b> 55 ms'), 'Latência WAN não foi formatada.');
+
+$dispositivosOffline = formatarEvento(array_replace_recursive($base, $eventos['515'], ['deviceEventClassId' => '515']));
+verificar(str_contains($dispositivosOffline, '<b>Dispositivos offline:</b> Gateway de teste, AP de teste'), 'Lista de dispositivos offline não foi formatada.');
+verificar(str_contains($dispositivosOffline, '<b>Quantidade:</b> 2'), 'Quantidade de dispositivos offline não foi formatada.');
 
 $ameacaBloqueada = formatarEvento(array_replace_recursive($base, $eventos['201'], ['deviceEventClassId' => '201']));
 verificar(str_contains($ameacaBloqueada, '<b>Assinatura IDS/IPS:</b> ET P2P BitTorrent DHT announce_peers request'), 'Assinatura IDS/IPS não foi formatada.');
